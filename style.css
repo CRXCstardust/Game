@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
+}
+
+/* The main container for the parallax effect */
+.parallax-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    /* This creates the 3D viewing space */
+    perspective: 1px;
+    transform-style: preserve-3d;
+}
+
+/* Base style for all parallax layers */
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* Use transform for hardware acceleration */
+    transform-origin: center center;
+}
+
+/* Define the Z-axis position for each layer.
+   Negative values move the layer away from the viewer. */
+.layer-1 {
+    background: url('path/to/your/background.jpg') no-repeat center center / cover;
+    transform: translateZ(-2px) scale(3); /* Moves it far back, scale it up to fill the view */
+}
+
+.layer-2 {
+    background: url('path/to/your/middle-layer.png') no-repeat center center / contain;
+    transform: translateZ(-1px) scale(2); /* Moves it a bit back */
+}
+
+.layer-3 {
+    background: url('path/to/your/another-middle-layer.png') no-repeat center center / contain;
+    transform: translateZ(-0.5px) scale(1.5); /* Moves it slightly back */
+}
+
+.layer-4 {
+    background: url('path/to/your/foreground.png') no-repeat center center / contain;
+    /* transform: translateZ(0) is the default, it will not be scaled. */
+}
+
+/* The content section that scrolls normally */
+.content-section {
+    position: relative;
+    z-index: 10; /* Make sure content is above the layers */
+    padding: 50px;
+    background-color: rgba(0, 0, 0, 0.7);
+    min-height: 150vh; /* Make the page long enough to scroll */
+    text-align: center;
+}
